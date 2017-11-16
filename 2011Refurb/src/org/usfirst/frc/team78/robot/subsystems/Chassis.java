@@ -2,6 +2,7 @@ package org.usfirst.frc.team78.robot.subsystems;
 
 import org.usfirst.frc.team78.robot.Robot;
 import org.usfirst.frc.team78.robot.RobotMap;
+import org.usfirst.frc.team78.robot.commands.DriveWithJoysticks;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;
@@ -23,22 +24,32 @@ public class Chassis extends Subsystem {
 	public void motorInit(){
 		rightBack.changeControlMode(TalonControlMode.Follower);
 		rightBack.set(rightFront.getDeviceID());
-		rightFront.reverseOutput(true);
 		leftBack.changeControlMode(TalonControlMode.Follower);
-		leftBack.set(leftFront.getDeviceID());
-		leftFront.reverseOutput(false);
-		
+		leftBack.set(leftFront.getDeviceID());		
 	}
+	public void setSpeed(double left, double right){
+		
+		rightFront.set(right);
+//		rightBack.set(right);
+    	leftFront.set(-left);
+//    	leftBack.set(-left);
+		
+    }
 
 	public void driveWithJoysticks(){
 		double left = Robot.oi.getDriverLeftStick(); //Multiply each by 0.45 and uncomment if statement for Granny Speed
     	double right = Robot.oi.getDriverRightStick();
+    	setSpeed(left, right);
     	
 	}
+	
+	public void stopAllDrive(){
+    	setSpeed(0,0);
+    }
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	driveWithJoysticks();
+    	setDefaultCommand(new DriveWithJoysticks());
     }
 }
