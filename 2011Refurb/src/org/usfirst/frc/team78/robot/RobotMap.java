@@ -8,9 +8,12 @@ package org.usfirst.frc.team78.robot;
  */
 public class RobotMap {
 
-	public static int RIGHT_FRONT = 0;
-	public static int RIGHT_BACK = 1;
-	public static int LEFT_FRONT = 2;
-	public static int LEFT_BACK = 3;
+	public static int RIGHT_FRONT = 3;
+	public static int RIGHT_BACK = 4;
+	public static int LEFT_FRONT = 1;
+	public static int LEFT_BACK = 2;
+	
+	public static int SHOULDER = 6;
+	public static int WRIST = 5;
 	
 }

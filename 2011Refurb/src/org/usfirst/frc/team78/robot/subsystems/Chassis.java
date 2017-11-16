@@ -31,11 +31,14 @@ public class Chassis extends Subsystem {
 	}
 
 	public void driveWithJoysticks(){
-		
+		double left = Robot.oi.getDriverLeftStick(); //Multiply each by 0.45 and uncomment if statement for Granny Speed
+    	double right = Robot.oi.getDriverRightStick();
+    	
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	driveWithJoysticks();
     }
 }
