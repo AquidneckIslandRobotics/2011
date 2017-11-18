@@ -29,11 +29,17 @@ public class Chassis extends Subsystem {
 	}
 	public void setSpeed(double left, double right){
 		
-		rightFront.set(right);
-//		rightBack.set(right);
-    	leftFront.set(-left);
-//    	leftBack.set(-left);
+		if(right < 0){
+			right = (right*right) * -1;
+		}else if(left < 0){
+			left = (left * left) * -1;
+		}else{
+			right = right*right;
+			left = left * left;
+		} 
 		
+		rightFront.set(right);
+    	leftFront.set(-left);	
     }
 
 	public void driveWithJoysticks(){

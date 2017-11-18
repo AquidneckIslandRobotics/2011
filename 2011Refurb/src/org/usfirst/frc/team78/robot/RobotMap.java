@@ -16,4 +16,7 @@ public class RobotMap {
 	public static int SHOULDER = 6;
 	public static int WRIST = 5;
 	
+	
+	public static int HAND_SOLONOID_OPEN = 2;
+	public static int HAND_SOLONOID_CLOSE = 1;
 }

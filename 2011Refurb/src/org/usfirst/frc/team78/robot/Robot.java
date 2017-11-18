@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team78.robot.commands.ExampleCommand;
+import org.usfirst.frc.team78.robot.subsystems.Arm;
 import org.usfirst.frc.team78.robot.subsystems.Chassis;
 import org.usfirst.frc.team78.robot.subsystems.ExampleSubsystem;
 
@@ -24,6 +25,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final Chassis chassis = new Chassis();
+	public static final Arm arm = new Arm();
 	public static final Compressor c = new Compressor(0);
 	public static OI oi;
 
