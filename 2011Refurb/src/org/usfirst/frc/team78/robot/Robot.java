@@ -114,6 +114,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		
+		SmartDashboard.putNumber("shoulder pot", arm.getShoulder());
 		Scheduler.getInstance().run();
 	}
 

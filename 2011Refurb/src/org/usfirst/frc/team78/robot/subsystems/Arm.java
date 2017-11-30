@@ -4,6 +4,7 @@ import org.usfirst.frc.team78.robot.RobotMap;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,6 +15,9 @@ public class Arm extends Subsystem {
 	
 	public CANTalon wrist = new CANTalon(RobotMap.WRIST);
 	public CANTalon shoulder = new CANTalon(RobotMap.SHOULDER);
+	
+	public AnalogInput shoulderPot = new AnalogInput(RobotMap.SHOULDER_POT);
+	public AnalogInput wristPot = new AnalogInput(RobotMap.WRIST_POT);
 	
 	DoubleSolenoid handSolenoid = new DoubleSolenoid(RobotMap.HAND_SOLONOID_OPEN, RobotMap.HAND_SOLONOID_CLOSE);
 	
@@ -47,6 +51,12 @@ public class Arm extends Subsystem {
 	
 	}
     
+	
+	public double getShoulder(){
+		return wristPot.getAverageVoltage();
+		
+	}
+	
     public void initDefaultCommand() {
        
     }

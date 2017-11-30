@@ -19,4 +19,12 @@ public class RobotMap {
 	
 	public static int HAND_SOLONOID_OPEN = 2;
 	public static int HAND_SOLONOID_CLOSE = 1;
+	
+	
+	public static int SHIFTER_SOLENOID_HIGH = 0;
+	public static int SHIFTER_SOLENOID_LOW = 3;
+	
+	public static int SHOULDER_POT = 3;
+	public static int WRIST_POT = 2;
+	
 }

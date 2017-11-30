@@ -7,12 +7,16 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team78.robot.commands.CloseHand;
 import org.usfirst.frc.team78.robot.commands.ExampleCommand;
 import org.usfirst.frc.team78.robot.commands.OpenHand;
+import org.usfirst.frc.team78.robot.commands.RefreshShift;
+import org.usfirst.frc.team78.robot.commands.ShiftHigh;
+import org.usfirst.frc.team78.robot.commands.ShiftLow;
 import org.usfirst.frc.team78.robot.commands.ShoulderDown;
 import org.usfirst.frc.team78.robot.commands.ShoulderUp;
 import org.usfirst.frc.team78.robot.commands.StopShoulder;
 import org.usfirst.frc.team78.robot.commands.WristDown;
 import org.usfirst.frc.team78.robot.commands.WristUp;
 import org.usfirst.frc.team78.robot.commands.StopWrist;
+import org.usfirst.frc.team78.robot.commands.ToggleShift;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -24,10 +28,14 @@ public class OI {
 	
 	public Button driverA = new JoystickButton(driverStick, 2);
 	public Button driverB = new JoystickButton(driverStick, 3);
+	public Button driverX = new JoystickButton(driverStick, 1);
+	public Button driverY = new JoystickButton(driverStick, 4);
 	public Button driverLB = new JoystickButton(driverStick, 5);
 	public Button driverLT = new JoystickButton(driverStick, 7);
 	public Button driverRB = new JoystickButton(driverStick, 6);
 	public Button driverRT = new JoystickButton(driverStick, 8);
+	public Button leftStickClick = new JoystickButton(driverStick, 11);
+	public Button rightStickClick = new JoystickButton(driverStick, 12);
 	public static Joystick driverStick = new Joystick(0);
 	
 	public OI(){
@@ -44,6 +52,13 @@ public class OI {
 		
 		driverA.whenPressed(new OpenHand());
 		driverB.whenPressed(new CloseHand());
+		
+		/*driverX.whenPressed(new ShiftHigh());
+		driverY.whenPressed(new ShiftLow());*/
+		
+		leftStickClick.whileHeld(new ToggleShift());
+		leftStickClick.whenReleased(new RefreshShift());
+		
 	}
 	public double getDriverLeftStick(){
 		double stick = driverStick.getY();

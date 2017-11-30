@@ -7,26 +7,28 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CloseHand extends Command {
-
-    public CloseHand() {
+public class ToggleShift extends Command {
+	
+    public ToggleShift() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.closeHand();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(Robot.oi.rightStickClick.get() && Robot.chassis.canShift) {
+    		Robot.chassis.toggleShift();
+        	Robot.chassis.canShift = false;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
