@@ -4,8 +4,9 @@ import org.usfirst.frc.team78.robot.Robot;
 import org.usfirst.frc.team78.robot.RobotMap;
 import org.usfirst.frc.team78.robot.commands.DriveWithJoysticks;
 
-import com.ctre.CANTalon;
-import com.ctre.CANTalon.TalonControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.CANTalon.TalonControlMode;
+
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -17,10 +18,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Chassis extends Subsystem {
 
-	public CANTalon rightFront = new CANTalon(RobotMap.RIGHT_FRONT);
-	public CANTalon rightBack = new CANTalon(RobotMap.RIGHT_BACK);
-	public CANTalon leftFront = new CANTalon(RobotMap.LEFT_FRONT);
-	public CANTalon leftBack = new CANTalon(RobotMap.LEFT_BACK);
+	public WPI_TalonSRX rightFront = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);
+	public WPI_TalonSRX rightBack = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
+	public WPI_TalonSRX leftFront = new WPI_TalonSRX(RobotMap.LEFT_FRONT);
+	public WPI_TalonSRX leftBack = new WPI_TalonSRX(RobotMap.LEFT_BACK);
 	
 	public boolean shiftState;
 	public boolean canShift = true;
@@ -28,10 +29,15 @@ public class Chassis extends Subsystem {
 	DoubleSolenoid shifter = new DoubleSolenoid(RobotMap.SHIFTER_SOLENOID_HIGH, RobotMap.SHIFTER_SOLENOID_LOW);
 	
 	public void motorInit(){
-		rightBack.changeControlMode(TalonControlMode.Follower);
-		rightBack.set(rightFront.getDeviceID());
-		leftBack.changeControlMode(TalonControlMode.Follower);
-		leftBack.set(leftFront.getDeviceID());
+//		rightBack.changeControlMode(TalonControlMode.Follower);
+//		rightBack.set(rightFront.getDeviceID());
+		
+		rightBack.follow(rightFront);
+		
+//		leftBack.changeControlMode(TalonControlMode.Follower);
+//		leftBack.set(leftFront.getDeviceID());
+		
+		leftBack.follow(leftFront);
 		
 		setLowGear();
 	}

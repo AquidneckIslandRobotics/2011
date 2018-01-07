@@ -2,7 +2,8 @@ package org.usfirst.frc.team78.robot.subsystems;
 
 import org.usfirst.frc.team78.robot.RobotMap;
 
-import com.ctre.CANTalon;
+//import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -13,8 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Arm extends Subsystem {
 	
-	public CANTalon wrist = new CANTalon(RobotMap.WRIST);
-	public CANTalon shoulder = new CANTalon(RobotMap.SHOULDER);
+	public WPI_TalonSRX wrist = new WPI_TalonSRX(RobotMap.WRIST);
+	public WPI_TalonSRX shoulder = new WPI_TalonSRX(RobotMap.SHOULDER);
 	
 	public AnalogInput shoulderPot = new AnalogInput(RobotMap.SHOULDER_POT);
 	public AnalogInput wristPot = new AnalogInput(RobotMap.WRIST_POT);
@@ -22,7 +23,7 @@ public class Arm extends Subsystem {
 	DoubleSolenoid handSolenoid = new DoubleSolenoid(RobotMap.HAND_SOLONOID_OPEN, RobotMap.HAND_SOLONOID_CLOSE);
 	
     public void wristUp(){
-    	wrist.set(0.78);    	
+    	wrist.set(0.78);   
     }
     public void wristDown(){
     	wrist.set(-0.78);    	
