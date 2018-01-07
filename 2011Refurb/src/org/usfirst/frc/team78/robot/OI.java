@@ -12,7 +12,7 @@ import org.usfirst.frc.team78.robot.commands.RefreshShift;
 import org.usfirst.frc.team78.robot.commands.ShiftHigh;
 import org.usfirst.frc.team78.robot.commands.ShiftLow;
 import org.usfirst.frc.team78.robot.commands.ShoulderDown;
-import org.usfirst.frc.team78.robot.commands.ShoulderUp;
+import org.usfirst.frc.team78.robot.commands.ShoulderUp; 
 import org.usfirst.frc.team78.robot.commands.StopShoulder;
 import org.usfirst.frc.team78.robot.commands.WristDown;
 import org.usfirst.frc.team78.robot.commands.WristUp;
