@@ -2,19 +2,20 @@ package org.usfirst.frc.team78.robot.subsystems;
 
 import org.usfirst.frc.team78.robot.RobotMap;
 
-import com.ctre.CANTalon;
-
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import com.ctre.phoenix.motorcontrol.can.*;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 /**
  *
  */
 public class Arm extends Subsystem {
 	
-	public CANTalon wrist = new CANTalon(RobotMap.WRIST);
-	public CANTalon shoulder = new CANTalon(RobotMap.SHOULDER);
+	public TalonSRX wrist = new TalonSRX(RobotMap.WRIST);
+	public TalonSRX shoulder = new TalonSRX(RobotMap.SHOULDER);
 	
 	public AnalogInput shoulderPot = new AnalogInput(RobotMap.SHOULDER_POT);
 	public AnalogInput wristPot = new AnalogInput(RobotMap.WRIST_POT);
@@ -22,23 +23,23 @@ public class Arm extends Subsystem {
 	DoubleSolenoid handSolenoid = new DoubleSolenoid(RobotMap.HAND_SOLONOID_OPEN, RobotMap.HAND_SOLONOID_CLOSE);
 	
     public void wristUp(){
-    	wrist.set(0.78);    	
+    	wrist.set(ControlMode.PercentOutput, 0.78);    	
     }
     public void wristDown(){
-    	wrist.set(-0.78);    	
+    	wrist.set(ControlMode.PercentOutput, -0.78);    	
     }
     public void stopWrist(){
-    	wrist.set(0);
+    	wrist.set(ControlMode.PercentOutput, 0);
     }
     
     public void shoulderUp(){
-    	shoulder.set(-0.5);
+    	shoulder.set(ControlMode.PercentOutput, -0.5);
     }
     public void shoulderDown(){
-    	shoulder.set(0.5);
+    	shoulder.set(ControlMode.PercentOutput, 0.5);
     }
     public void stopShoulder(){
-    	shoulder.set(0);
+    	shoulder.set(ControlMode.PercentOutput, 0);
     }
     
     public void openHand(){
